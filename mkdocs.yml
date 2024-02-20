@@ -1,0 +1,41 @@
+site_name: Limulator
+theme:
+  name: readthedocs
+
+nav: 
+  - Home: index.md
+  - Scenenario Generator: 
+    - LLM Scenario Builder: LLM-Scenario-Builder.md
+    - OSM To XODR: OSM2XODR.md
+    - Manuever Generator: ManeuverGenerator.md
+    - Variation Engine: VariationEngine.md
+  
+  - Simulation: 
+    - Game: game.md
+    - Lights: lights.md
+    - Map: map.md 
+    - Weather: weather.md
+    - Visalizer: visualizer.md 
+    - Core: core.md 
+    - Traffic: TrafficManager.md 
+    - Pedestrian: PedestrianManager.md
+    - Util: Util.md 
+
+  - Sensor:
+    - Camera: CameraSensor.md 
+    - Depth Camera: DepthCamera.md 
+    - Semantic Segmentation Camera: SemanticSegmentationCamera.md 
+    - Rotation Lidar: LidarSensor.md 
+    - Solid State Lidar: SolidStateLidarSensor.md 
+    - Bounding Box Sensor: BoundingBoxSensor.md
+    - Radar: Radar.md 
+  
+  - Modelling: 
+    - Tool Summary: ToolSummary.md
+    - Lights: LightsModelling.md
+    - Pedestrians: PedestrianModelling.md
+    - Vehicles: VehiclesModelling.md
+
+plugins:
+  - search 
+  - pdf-export

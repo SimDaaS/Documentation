@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Radar - Limulator</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Radar";
+        var mkdocs_page_input_path = "Radar.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Limulator
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Scenenario Generator</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../LLM-Scenario-Builder/">LLM Scenario Builder</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../OSM2XODR/">OSM To XODR</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ManeuverGenerator/">Manuever Generator</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../VariationEngine/">Variation Engine</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Simulation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../game/">Game</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../lights/">Lights</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../map/">Map</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../weather/">Weather</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../visualizer/">Visalizer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../core/">Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../TrafficManager/">Traffic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PedestrianManager/">Pedestrian</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Util/">Util</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Sensor</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../CameraSensor/">Camera</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../DepthCamera/">Depth Camera</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../SemanticSegmentationCamera/">Semantic Segmentation Camera</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../LidarSensor/">Rotation Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../SolidStateLidarSensor/">Solid State Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../BoundingBoxSensor/">Bounding Box Sensor</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Radar</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#version">Version</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#developer">Developer</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#1-summary">1. Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-method">2. Method</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#data-flow-diagram">Data Flow Diagram:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#radar-attributes">Radar attributes:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#output">Output:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-requirements">3. Requirements</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Modelling</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ToolSummary/">Tool Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../LightsModelling/">Lights</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PedestrianModelling/">Pedestrians</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../VehiclesModelling/">Vehicles</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Limulator</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Sensor</li>
+      <li class="breadcrumb-item active">Radar</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="module-name">Module Name</h1>
+<p>Radar</p>
+<h2 id="version">Version</h2>
+<h3 id="developer">Developer</h3>
+<p>Shirshakk Purkayastha</p>
+<h2 id="1-summary">1. Summary</h2>
+<p>The Radar sensor is used to generate point sized rays using the input parameters of sensors {range, HorizontalFOV, VerticalFOV, and PulsesPerSeconds} to stimulate an automobile radar sensor.  It takes into account the FOV parameters (horizontal and vertical), creates a cone of view on this basis, uses raycasting to stimulate radar waves and provides the return information of the detected objects. The output includes the details of coordinates, range, relative velocity, azimuth and elevatiion angles of each hit.</p>
+<h2 id="2-method">2. Method</h2>
+<p>Using the input parameters of range, HorizontalFOV, and VerticalFOV, a cone of interest is created in front of the radar sensor. Within this cone, 'PPS' number of rays are fired uniformly in random (Ray Casting), taking into account the stimulation speed (FPS). Whenever the points touch down for the first instance within the range, a hit is generated by using the <code>LineTraceSingleByChannel</code> function of Unreal <a href="https://docs.unrealengine.com/5.0/en-US/using-a-single-line-trace-raycast-by-channel-in-unreal-engine/">read_more</a>. The hit is  stored in an <code>OutHit</code> data structure and corresponding details of [x,y,z], relative_velocity, azimuth_angle, vertical_angle, and range are then calcualted and stored into the OutHit structure.</p>
+<h3 id="data-flow-diagram">Data Flow Diagram:</h3>
+<p><img alt="Radar Data flow" src="../resources/Radar.jpg" /></p>
+<h3 id="radar-attributes">Radar attributes:</h3>
+<table>
+<thead>
+<tr>
+<th>Input Attributes</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Range</code></td>
+<td>float</td>
+<td>20000</td>
+<td>Maximum distance to which the pulses can return back to the radar sensor after being fired</td>
+</tr>
+<tr>
+<td><code>HorizontalFOV</code></td>
+<td>float</td>
+<td>120</td>
+<td>Total coverage angle of the radar sensor in the horizontal plane</td>
+</tr>
+<tr>
+<td><code>VerticalFOV</code></td>
+<td>float</td>
+<td>30</td>
+<td>Toatl coverage angle of the radar sensor in the vertical plane</td>
+</tr>
+<tr>
+<td><code>PPS</code></td>
+<td>int</td>
+<td>1500</td>
+<td>Pulses Per Second, denotes the number of pulses to be fired in one second</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Output Attributes</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>X</code></td>
+<td>float</td>
+<td>X- coordinate of the point where the radar ray hits</td>
+</tr>
+<tr>
+<td><code>Y</code></td>
+<td>float</td>
+<td>Y- coordinate of the point where the radar ray hits</td>
+</tr>
+<tr>
+<td><code>Z</code></td>
+<td>float</td>
+<td>Z- coordinate of the point where the radar ray hits</td>
+</tr>
+<tr>
+<td><code>velocity</code></td>
+<td>float</td>
+<td>Relative velocity of the detected object</td>
+</tr>
+<tr>
+<td><code>azimuth_angle</code></td>
+<td>float</td>
+<td>Horizontal angle of the detected object w.r.t. the radar</td>
+</tr>
+<tr>
+<td><code>elevation_angle</code></td>
+<td>float</td>
+<td>Vertical angle of the detected object w.r.t. the radar</td>
+</tr>
+<tr>
+<td><code>range</code></td>
+<td>float</td>
+<td>Distance of the detected object from the radar sensor</td>
+</tr>
+</tbody>
+</table>
+<h3 id="output">Output:</h3>
+<p>The [x,y,z] coordinates of the detection, along with relative velocity, range, and the corresponding horizontal and vertical angles of the detection, stored in the <code>Rays</code> data structure.</p>
+<h2 id="3-requirements">3. Requirements</h2>
+<p>The super file containing the details of each sensor (Sensor.h).</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../BoundingBoxSensor/" class="btn btn-neutral float-left" title="Bounding Box Sensor"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ToolSummary/" class="btn btn-neutral float-right" title="Tool Summary">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../BoundingBoxSensor/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../ToolSummary/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

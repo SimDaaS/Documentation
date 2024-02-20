@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Util - Limulator</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Util";
+        var mkdocs_page_input_path = "Util.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Limulator
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Scenenario Generator</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../LLM-Scenario-Builder/">LLM Scenario Builder</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../OSM2XODR/">OSM To XODR</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ManeuverGenerator/">Manuever Generator</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../VariationEngine/">Variation Engine</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Simulation</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../game/">Game</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../lights/">Lights</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../map/">Map</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../weather/">Weather</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../visualizer/">Visalizer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../core/">Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../TrafficManager/">Traffic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PedestrianManager/">Pedestrian</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Util</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#version">Version</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#developer">Developer</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#1-summary">1. Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-method">2. Method</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-requirements">3. Requirements</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Sensor</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../CameraSensor/">Camera</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../DepthCamera/">Depth Camera</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../SemanticSegmentationCamera/">Semantic Segmentation Camera</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../LidarSensor/">Rotation Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../SolidStateLidarSensor/">Solid State Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../BoundingBoxSensor/">Bounding Box Sensor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Radar/">Radar</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Modelling</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ToolSummary/">Tool Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../LightsModelling/">Lights</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PedestrianModelling/">Pedestrians</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../VehiclesModelling/">Vehicles</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Limulator</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Simulation</li>
+      <li class="breadcrumb-item active">Util</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="util">Util</h1>
+<h2 id="version">Version</h2>
+<h3 id="developer">Developer</h3>
+<h2 id="1-summary">1. Summary</h2>
+<p>This module is designed to assist other modules, such as lidar and camera functionalities, within LimulatorUE. Additionally, it helps in logging, writing JSON files, and performing various functions regularly utilized in LimulatorUE, such as unit conversions specific to Unreal Engine and obtaining file locations within the project. </p>
+<h2 id="2-method">2. Method</h2>
+<p>Util module consisits five class <code>ImageUtil</code>, <code>LidarUtil</code>, <code>JSONUtil</code>, <code>LimulatorHelper</code>, <code>LimulatorLogger</code>. 
+<br></p>
+<p>ImageUtil is used by Image data worker to convert binary image data captured by camera sensor into JPG or PNG format. 
+1. <code>ConvertToPng</code>: Convert binary image data to PNG format. 
+2. <code>ConvertToJpg</code>: Convert binary image data to JPG format.
+3. <code>SaveToFile</code>: Save binary image data to input file.
+4. <code>SavePngFile</code>: First converts binary data to PNG format and then save to file.
+5. <code>SaveJpgFile</code>: First converts binary data to JPG format and then save to file. 
+<br></p>
+<p>The LidatUtil module consists of various functions used by lidar sensor:
+1. <code>GetMaterialNameByHitResult</code>: This function returns the material of hit point resulting from ray casting.
+2. <code>GetIncidentAngle</code>: This function returns the incident angle of lidar rays upon hitting a surface.
+3. <code>ComputeIntensityRotatingLidar</code>: This function calculates the intensity for a Lidar sensor using the formula provided in the documentation for <a href="../LidarSensor/">Lidar Sensor</a>. 
+4. <code>ComputeIntensitySolidStateLidar</code>: This function calcultes the intensity for a Solid state Lidar sensor using the formula provided in the documentation for <a href="../LidarSensor/">Lidar Sensor</a>.
+5. <code>GetClassTagByHitResult</code>: This function returns the class of the hit point resulting from ray casting.
+6. <code>AddRandomNoise</code>: This function adds noise to the resulting hit points.
+<br></p>
+<p>The LimulatorHelper module consists of various helper functions designed to help in different tasks:
+1. <code>ComputeAngleBetweenTwoVectors</code>: This function calculates the angle in degrees between two vectors.
+2. <code>VectorUnrealToNormal</code>: It converts an Unreal Engine vector to a typical vector format used outside of Unreal.
+3. <code>VectorNormalToUnreal</code>: This function converts a typical vector to an Unreal Engine vector.
+4. <code>RotatorNormalToUnreal</code>: It converts rotations in the usual format to Unreal Engine rotations.
+5. <code>LocationToPosition</code>: This function converts an Unreal Engine location to a roamanager::position.
+6. <code>PositionToFVector</code>: It converts a roamanager::position to an Unreal Engine location vector.
+7. <code>GetXoscFilePath</code>: This function returns the path of the input Xosc file.
+8. <code>GetXodrFilePath</code>: This function returns the path of the input Xodr file.</p>
+<p>JSONUtil is used by bounding box sensor to save bounding box information into JSON file. 
+<br></p>
+<p>LimulatorLogger is used to log anything in Limulator category. </p>
+<h2 id="3-requirements">3. Requirements</h2>
+<ol>
+<li>Unreal Engine </li>
+</ol>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../PedestrianManager/" class="btn btn-neutral float-left" title="Pedestrian"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../CameraSensor/" class="btn btn-neutral float-right" title="Camera">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../PedestrianManager/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../CameraSensor/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
