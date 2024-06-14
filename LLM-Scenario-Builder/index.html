@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>LLM Scenario Builder - Limulator</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "LLM Scenario Builder";
+        var mkdocs_page_input_path = "LLM-Scenario-Builder.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Limulator
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Scenenario Generator</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">LLM Scenario Builder</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#version-10">Version 1.0</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#developer-meet-maratha">Developer: Meet Maratha</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#1-task-list">1. Task List</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-summary">2. Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-method">3. Method</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#31-inputs">3.1 Inputs</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#32-llm-data-extractor">3.2 LLM Data Extractor</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#33-road-network-information">3.3 Road Network Information</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#34-scenario-information">3.4 Scenario Information</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#35-road-network-generator">3.5 Road Network Generator</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#36-scenario-generator">3.6 Scenario Generator</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#37-syntax-checker">3.7 Syntax Checker</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#38-output">3.8 Output</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-requirement">4. Requirement</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-how-to-guide">4. How-to-guide</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5-tutorial">5. Tutorial</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../OSM2XODR/">OSM To XODR</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ManeuverGenerator/">Manuever Generator</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../VariationEngine/">Variation Engine</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Simulation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../game/">Game</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../lights/">Lights</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../map/">Map</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../weather/">Weather</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../visualizer/">Visalizer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../core/">Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../TrafficManager/">Traffic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PedestrianManager/">Pedestrian</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Util/">Util</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Sensor</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../CameraSensor/">Camera</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../DepthCamera/">Depth Camera</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../SemanticSegmentationCamera/">Semantic Segmentation Camera</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../LidarSensor/">Rotation Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../SolidStateLidarSensor/">Solid State Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../BoundingBoxSensor/">Bounding Box Sensor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Radar/">Radar</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Modelling</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ToolSummary/">Tool Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../LightsModelling/">Lights</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PedestrianModelling/">Pedestrians</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../VehiclesModelling/">Vehicles</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Limulator</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Scenenario Generator</li>
+      <li class="breadcrumb-item active">LLM Scenario Builder</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="llm-scenario-builder">LLM Scenario Builder</h1>
+<h2 id="version-10">Version 1.0</h2>
+<h3 id="developer-meet-maratha">Developer: Meet Maratha</h3>
+<blockquote>
+<p><em>NOTE:</em> This is a test repository and there may be some errors present. The user should be well versed in coding and be able to handle them.</p>
+</blockquote>
+<h2 id="1-task-list">1. Task List</h2>
+<ul>
+<li>[x] Check which LLM's can be used for this purpose and how do they fare in comparision to each other.</li>
+<li>[x] Generate a list of prompts that can be used for LLM's to generate a condensed scenario data.</li>
+<li>[x] Display a method we can use to generate scenarios from the scenario data provided by LLM's using scenariogeneration module.</li>
+<li>[x] Create a basic pipeline that can be made more robust in the future to generate more scenarios.</li>
+<li>[x] Integration with Permutation and Combination module.</li>
+<li>[ ] To update the README/User guide.</li>
+<li>[ ] Choose the LLM that we will be using to generate scenarios.</li>
+<li>[ ] A parser to parse the output from the LLM into a standard format which we can save at a location to be used in future.</li>
+<li>[ ] A parser to parse the stored standard format of scenario description in a text file and generate a python dictionary from it.</li>
+<li>[ ] Make the scenario generation methods more robust to handle edge scenarios and not produce errors as much as possible.</li>
+<li>[ ] Profile the code and try to optimize it.</li>
+</ul>
+<h2 id="2-summary">2. Summary</h2>
+<p>This module is responsible for generation of <a href="https://www.asam.net/standards/detail/openscenario-xml/">OpenScenario</a> files with the help of Large Language Models (LLMs) such as <a href="https://chat.openai.com/">ChatGPT</a> and <a href="https://gemini.google.com/app">GoogleGemini</a>. In this pipeline we decide the type of scenario to be generated and then use LLMs API prompting to get relevant information about the scenario and the environment. We then use our method to generate the road network, which is stored as <a href="https://www.asam.net/standards/detail/opendrive/">OpenDrive</a> file and scenario description that is stored as an OpenScenario 1.2.0. </p>
+<p>To get information about the scenario and environment through LLM we use our proprietary solution that ensures reliable and accurate files. This proprietary solution consits of data generation, validation, and error free output file generation. </p>
+<p>This module uses OpenScenario 1.2.0 as its output format for the scenario. Before saving the scenario in database we perform a syntax check on it to ensure that there is no error in the generate OpenScenario file. We can use this generated OpenScenario file defining the maneuver in combination with our <a href="../VariationEngine/">Variation Engine</a> which can perform Permutation and Combination to generate variations of this base scenario to provide you bulk of OpenScenario files for one/collection of Base scenario(s).</p>
+<h2 id="3-method">3. Method</h2>
+<p><img alt="LLM Scenario Builder Data Flow Chart" src="../resources/llm_scenario_builder.png" /></p>
+<h3 id="31-inputs">3.1 Inputs</h3>
+<ul>
+<li><strong>Scenario Type:</strong> The type of scenario that has to be generated.</li>
+<li><strong>Number of Scenarios:</strong> The number of scenarios that we need as output. </li>
+</ul>
+<h3 id="32-llm-data-extractor">3.2 LLM Data Extractor</h3>
+<ul>
+<li>This is our proprietary module that uses the inputs to generate a compressed, reliable, and valid datastructure that we can use to generate OpenDrive and OpenScenario files.</li>
+</ul>
+<h3 id="33-road-network-information">3.3 Road Network Information</h3>
+<ul>
+<li>This is a datastructure that stores information about the road network which we can use to generate OpenDrive file.</li>
+</ul>
+<h3 id="34-scenario-information">3.4 Scenario Information</h3>
+<ul>
+<li>This stores information about the vehicles, objects, and their interaction in a datastructure that can be used to generate OpenScenario files.</li>
+</ul>
+<h3 id="35-road-network-generator">3.5 Road Network Generator</h3>
+<ul>
+<li>This module takes the road network information generated using LLM Data Extractor and prepares a cohesive OpenDrive file with all the roads, their connections, and roadside objects.</li>
+</ul>
+<h3 id="36-scenario-generator">3.6 Scenario Generator</h3>
+<ul>
+<li>This takes the scenario information generated by LLM Data Extractor and generates an OpenScenario file that has all the vehicles, objects, pedestrians, and thier interactions.</li>
+</ul>
+<h3 id="37-syntax-checker">3.7 Syntax Checker</h3>
+<ul>
+<li>This takes input as OpenDrive or OpenScenario file and checks for any syntax error.</li>
+<li>If it finds a syntax error in one of these files, it drops both of them and moves on to other processes.</li>
+</ul>
+<h3 id="38-output">3.8 Output</h3>
+<ul>
+<li><strong>OpenDrive File:</strong> This is the final OpenDrive file which has been generated using LLM Scenario Builder.</li>
+<li><strong>OpenScenario File:</strong> This is the final OpenScenario file which has been generated using LLM Scenario Builder.</li>
+<li>Both of these files are stored in database for further computation on them.</li>
+</ul>
+<h2 id="4-requirement">4. Requirement</h2>
+<ol>
+<li>Installed Python version 3.10</li>
+<li>ScenarioGeneration Python package.</li>
+<li>LLM API key</li>
+</ol>
+<h2 id="4-how-to-guide">4. How-to-guide</h2>
+<ol>
+<li>
+<p>Install python version 3.10</p>
+</li>
+<li>
+<p>Open a command prompt (cmd) or terminal on your system.</p>
+</li>
+</ol>
+<p><strong>For Windows:</strong>
+- Open the folder in file explorer where you want to clone the repository
+- Click on the white space after the path which is displayed in file explorer.</p>
+<p><img alt="" src="../resources/image10.png" /></p>
+<ul>
+<li>Remove the path and type cmd instead of it, and click enter.</li>
+</ul>
+<p><img alt="" src="../resources/image11.png" /></p>
+<ul>
+<li>This will open the command prompt window.</li>
+</ul>
+<p><strong>For Linux:</strong>
+- Open the terminal as you would normally do in your system.</p>
+<ol>
+<li>Clone the github repository using the following command</li>
+</ol>
+<pre><code>git clone https://github.com/MeetMaratha/ScenarioGeneration-Test.git
+</code></pre>
+<ol>
+<li>Change direcotries to the cloned repository using following commands:</li>
+</ol>
+<pre><code>cd ScenarioGeneration-Test
+</code></pre>
+<ol>
+<li>Make a virtual environment to work. This is only needed to separate the project from the main system install. You can use the following command in the cloned github folder to generate the virtual environment </li>
+</ol>
+<p><strong>For Windows and Linux distributions other than Ubuntu/Debian:</strong></p>
+<pre><code>python -m venv sg_venv
+</code></pre>
+<p><strong>For Ubuntu/Debian use following command:</strong></p>
+<pre><code>python3 -m venv sg_venv
+</code></pre>
+<ol>
+<li>Activate the virtual environment using the following command in the cloned github folder</li>
+</ol>
+<p><strong>For Bash/ZSH shell:</strong></p>
+<pre><code>source sg_ven/bin/activate
+</code></pre>
+<p><strong>For Windows Command Prompt/Powershell/Windows Terminal:</strong></p>
+<pre><code>sg_venv\Scripts\activate
+</code></pre>
+<p><strong>For Fish shell:</strong></p>
+<pre><code>source sg_venv/bin/activate.fish
+</code></pre>
+<ol>
+<li>Install the python packages required using the following command</li>
+</ol>
+<pre><code>pip install -r requirements.txt
+</code></pre>
+<h2 id="5-tutorial">5. Tutorial</h2>
+<ol>
+<li>Use the following prompt to generate 20 scenarios of any scenario type using one of the suggested LLM's. We used a place holder <strong>[Scenario Name]</strong> here, remember to replace it with valid value.</li>
+</ol>
+<pre><code>Act as a scenario writer. Generate 20 different [Scenario Name] scenario that I can use as a base and use permutations and combinations to generate multiple scenarios from it. Format the output as a list of paragraphs.
+</code></pre>
+<ol>
+<li>Now choose one of the scenarios from the output and generate a xodr data dictionary for it using the LLM and the following prompt. Place the scenario description you have choosen where there is a place holder <strong>[Scenario Description]</strong></li>
+</ol>
+<pre><code>profile picture
+Generate a structured dictionary data for the following scenario. The comments in &quot;()&quot; are somethings that I need you to pay extra attention to:
+&quot;
+[Scenario Description]
+&quot;
+Fill the values for each of these tags (need to be numerical). Following tags should be present compulsorily and they should be presented in the following structure:
+1. Number of roads (calculate it properly)
+2. Number of lanes in each road (calculate it properly)
+3. Number of junctions (Do not put unnecessary junctions in the network, if there are more than 3 roads then only a junction can be formed, so check whether that is the case or not based on the description)
+4. Road Information
+    a. Lane Information
+        i. Length of lane
+        ii. Direction of driving (calculate it properly, based on the description, +1 or -1 representing left and right driving respectively)
+        iii. Width of lane
+        iv. Id of lane
+    b. Predecessor and Successor of roads (calculate it properly, if there are any. Neighboring roads are not predecessor and successors. Also notify the first road in the road network, which would not have any predecessor with -1)
+    c. Name of the road
+    d. Angle of the road (If there is a junction)
+
+If you could, provide an image that I can use to understand how road network should look like. Format the output as python dictionary.
+</code></pre>
+<ol>
+<li>Now try to generate a XOSC data description using the LLM for the chosen scenario using the following prompt. Similar to the previous step copy the scenario description where there is a place holder <strong>[Scenario Description]</strong></li>
+</ol>
+<pre><code>Generate a structured dictionary data for the following scenario. The comments in &quot;()&quot; are somethings that I need you to pay extra attention to:
+&quot;
+[Scenario Description]
+&quot;
+Fill the values for each of these tags (need to be numerical). Following tags should be present compulsorily and they should be presented in the following structure:
+1. Number of Entities (Based on previoius response)
+2. Information of entities (Based on previous response for each entity)
+    a. Name of Entity
+    b. Dimensions of Entity (Length, Width, Height)
+    c. Displacement in X along a lane of the road
+    d. Action associated to this entity
+        i. Name of the action
+        ii. Trigger for the action (Keep this as time)
+        iii. When does the action occur?
+        iv. How long does the action occur?
+        v. If there is a lane/road change due to this action, specify it 
+    e. Initial speed of the vehicle
+3. Weather
+
+Format the output as python dictionary
+</code></pre>
+<ol>
+<li>Now make a copy of any of the files in the Input folder and replace/add the values as necessary. This is currently a manual task but would automated in future. You can use the following command to make the copy (We suggest you use this command and while using it be in the root directory of the repository)</li>
+</ol>
+<p><strong>For Linux systems:</strong></p>
+<pre><code>cp Inputs/Test_CI_1.py Inputs/New_File.py
+</code></pre>
+<p><strong>For Windows system:</strong></p>
+<pre><code>copy &quot;Inputs\Test_CI_1.py&quot; &quot;Inputs\New_File.py&quot;
+</code></pre>
+<p>This commands will generate a python file that you will need to update in the <code>Inputs</code> folder and the file would be called <code>New_File.py</code></p>
+<ol>
+<li>Rename the file according to the type of the scenario description. This is the only labeling of file that will help you seperate it from others, so do it correctly.</li>
+</ol>
+<p>We recommend the following naming: <code>Test_{Type of Scenario in Abbreviation}_{Next Number of file}.py</code>
+We recommend the following abbreviations</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Abbreviation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lane Change</td>
+<td>LC</td>
+</tr>
+<tr>
+<td>Left Turn</td>
+<td>LT</td>
+</tr>
+<tr>
+<td>Right Turn</td>
+<td>RT</td>
+</tr>
+<tr>
+<td>Cut-in</td>
+<td>CI</td>
+</tr>
+<tr>
+<td>Cut-out</td>
+<td>CO</td>
+</tr>
+<tr>
+<td>Left turn/Right Turn</td>
+<td>LT_RT</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>
+<p>Now manually edit the python script saved and add the information to the <code>custom_parameters</code> python dictionary. Add the things to the relevant places as mentioned using the comments.</p>
+</li>
+<li>
+<p>Once you are satisfied with your editing, run the <code>main.py</code> file using the following commands:</p>
+</li>
+</ol>
+<p><strong>For Windows and Linux distributions other than Ubuntu/Debian:</strong></p>
+<pre><code>python main.py
+</code></pre>
+<p><strong>For Ubuntu/Debian use following command:</strong></p>
+<pre><code>python3 main.py
+</code></pre>
+<ol>
+<li>
+<p>This will launch an interactive shell where you can choose the file for which you want to generate scenario and realizations.</p>
+</li>
+<li>
+<p>Once it is done, the outputs will be stored in the <code>Outputs</code> folder. Following subfolders will have following outputs:</p>
+<ul>
+<li><strong>XODR:</strong> The XODR files generated for your choice.</li>
+<li><strong>XOSC:</strong> The XOSC files generated for your choice.</li>
+<li><strong>Realizations:</strong> The permutation and combination of your generated XOSC file will be stored in it inside a folder for each scenario. The folder name is based on the name of the input python file. </li>
+</ul>
+</li>
+</ol>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../OSM2XODR/" class="btn btn-neutral float-right" title="OSM To XODR">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../OSM2XODR/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

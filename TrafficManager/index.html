@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Traffic - Limulator</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Traffic";
+        var mkdocs_page_input_path = "TrafficManager.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Limulator
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Scenenario Generator</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../LLM-Scenario-Builder/">LLM Scenario Builder</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../OSM2XODR/">OSM To XODR</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ManeuverGenerator/">Manuever Generator</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../VariationEngine/">Variation Engine</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Simulation</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../game/">Game</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../lights/">Lights</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../map/">Map</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../weather/">Weather</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../visualizer/">Visalizer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../core/">Core</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Traffic</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#version">Version</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#developer">Developer</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#1-summary">1. Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-method">2. Method</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#traffic-manager-attributes">Traffic Manager attributes</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-requirements">3. Requirements</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PedestrianManager/">Pedestrian</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Util/">Util</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Sensor</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../CameraSensor/">Camera</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../DepthCamera/">Depth Camera</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../SemanticSegmentationCamera/">Semantic Segmentation Camera</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../LidarSensor/">Rotation Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../SolidStateLidarSensor/">Solid State Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../BoundingBoxSensor/">Bounding Box Sensor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Radar/">Radar</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Modelling</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ToolSummary/">Tool Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../LightsModelling/">Lights</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PedestrianModelling/">Pedestrians</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../VehiclesModelling/">Vehicles</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Limulator</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Simulation</li>
+      <li class="breadcrumb-item active">Traffic</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="traffic-manager">Traffic Manager</h1>
+<h2 id="version">Version</h2>
+<h3 id="developer">Developer</h3>
+<h2 id="1-summary">1. Summary</h2>
+<p>This module is designed to control the vehicles and traffic in simulation. This modules ensures that vehicles in simulation follows traffic rules. This modules manuvers the vehicles in simulation without any collision.  </p>
+<h2 id="2-method">2. Method</h2>
+<p>When the simulation starts first of all spawn points are calculate as per seed value on provided XODR. Once spawn points are generated vehicles stored in asset libraray are randomly spawned on points. After spawning a vehilcle it is initalised by its current route, default speed, haltDistanceFromFrontVehicle, tailgateDistance, emergencyHaltDistance, signalStoppingDistance , laneChangeProbability and boundingboxExtends. All the parameter are calculated randomly by gaussin distribution over mean and deviation value of respective variable. After all vehicles are iniitalised they starts manuvering on their current route. Now to control vehicles and to make them follow traffic rules different functions are callled, for example to control vehicles speed, <code>Speed control</code> function is called which controls the speed to vehicles speed according to vehilce position and position of other vehicles. There is <code>Light stage</code> funcion which ensures that vehicles follow traffic light rule. There is <code>Collsion stage</code> function which manages the junctions that has no traffic lights, it insures that there should no collision between the vehicles when passing through this junction. Then there is <code>Lane change stage</code> function which is responsible to make a vehicles lane change without any collision. These all function follows some rules to perforn all the actions. The rules for every function is listed below-
+<br></p>
+<p><strong>Spawining of vehicles</strong> 
+1. The total number of spawnable points is calculated for a map based on a variable average distance $d$ with a random offset. 
+2. Each spawn point is located at a distance of $d$ (currently set at 15m) from the starting point of the road.
+3. Spawn points are determined only within the driving lanes.
+4. Lanes with a width less than 2m will not generate any spawn points.
+5. The heading of spawn points is set according to the rule of the road.
+6. Spawn points are not generated within junctions.
+7. Spawnable points are shuffled using a random seed provided by the user. Thus, for a given seed, the spawn points will be deterministic. For perfect randomization, the seed "time" can be used. 
+8. The first $n$ spawn points are selected from the available spawnable points based on the number of vehicles specified..<br />
+9. For any given road point, a lane is randomly chosen. Additionally, no two spawn points will lie parallel on lanes.
+10. If the number of vehicles is greater than the available spawn points on the map, then the simulation stops. In other words, the number of vehicles must be less than or equal to the number of spawn points available.
+<br></p>
+<p><strong>Speed Control</strong>
+1. Vehicle speed is adjusted accordingly when anticipating a turn or approaching a junction. 
+2. At junctions, the maximum speed of vehicles is set to 20 km/h, while at turns it's calculated using the formulae: $\sqrt(\mu * g / \left|\text{Curvature}\right|) * 3.6) - 6.0$ where $ \mu $ is cofficient of friction $g$ is acceleration due to gravity, $curvature$ is the curvature of road at that point. 
+3. If a vehicle is traveling at a lower speed in front, the following vehicle adjusts its speed to maintain a safe tailgate distance between them.
+4. Vehicles in junctions are not considered as vehicles in front; it's assumed that junction-specific rules apply, and collisions are avoided.
+5. When encountering a stopped vehicle ahead, the vehicle stops before reaching a minimum distance from the stopped vehicle.
+6. In the presence of any obstruction ahead, other than a moving vehicle in the lane (e.g., a horizontally parked vehicle), an emergency brake is applied.
+7. The vehicle's speed is decreased by a decleration of $\frac{{v^2 - u^2}}{{2d}}$, where where $v$ is the final speed and $u$ is the initial speed, over a distance $d$. 
+<br></p>
+<p><strong>Lights Stage</strong>
+1. At a traffic light junction, vehicles follows the traffic light signals.
+2. If the light is red or yellow, the vehicle stops at a given distance from the traffic light. 
+3. Only the first vehicle in the lane stops by the influence of the traffic light, subsequent vehicles stop because the vehicle in front is stopped.
+4. The vehicle only starts moving when the light is green. 
+5. Once the vehicle is inside the junction, it’ll continue moving even if the light has switched to red. This is to avoid the deadlock. <br />
+6. Vehicle senses traffic light not with a camera or any kind of perception but rather it mathematically calculates the distance and checks the heading between the vehicle and the light.
+Condition: Distance &lt; 100m / Light Influence Distance &amp;&amp; they must face each other &amp;&amp; vehicle must come before the light in this facing. 
+<br></p>
+<p><strong>Collsion Stage</strong>
+1. Multiple vehicles are allowed in the junction simultaneously.
+2. Every vehicle in the junction checks its collision with other vehicles at the junction.
+3. Vehicles that cannot collide with each other are allowed to pass through the junction.
+4. Vehicles passing through the junction are randomly selected from a set of non-colliding vehicles. 
+5. Once a vehicle enters the junction it must continue moving without stopping within the junction.
+6. It’ll cause a deadlock if a vehicle for some reason fails inside the junction. 
+<br></p>
+<p><strong>Lane Chane Stage</strong>
+1. Vehicle will only change lanes if the destination lane is a driving lane and its width is greater than 2m. 
+2. Vehicles don't change lanes while in a junction.
+3. If Vehicle has both the left lane or right to choose, it chooses randomly between the left lane and right lane. 
+4. Every vehicle calculates its safe lane change distance based on their speed. The estimate is very crude and calculated by trial and error. 
+5. Based on safe distance vehicles see its back and front and check if lane change is safe or not, if safe then only do lane change.
+6. If a junction is occuring in the safe distance checking it’ll reject the lane change. 
+7. All the checking before the start of the maneuver. Once the lane change is started, no additional checking is done and it can’t be stopped in between. This may lead to a scenario where a vehicle is blocking both the lanes because speed restriction came into play. To circumvent this, a persistent checking can be done which can cancel the maneuver in between if deemed so. 
+8. If lane change is assigned then, its current waypoints are scrubbed and a list of waypoints is generated starting the safe distance in the changing lane. PIDs are responsible for maneuvering and straightening. 
+9. Every time a lane change happens a small offset gets applied to the vehicle i.e. if the vehicle was moving in the center then after changing the lane it’ll stabilize a little off the center. </p>
+<p><strong>Traffic Manager General Rules</strong>
+1. If an obstacle, such as a parked vehicle, obstructs the corner of a lane, approaching vehicles will come to a complete stop rather than attempting to navigate around it with a slight turn.
+2. If a vehicle comes to a stop in the middle of the road due to a failure or for any other reason, approaching vehicles will also stop rather than overtaking the stationary vehicle.
+3. Any vehicle out from the road for more than 1 second will be destroyed and removed from the map.</p>
+<p><img alt="Traffic Manager Data flow" src="../resources/TrafficManager.jpg" /></p>
+<h3 id="traffic-manager-attributes">Traffic Manager attributes</h3>
+<table>
+<thead>
+<tr>
+<th>Input attribute</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vehicleCount</code></td>
+<td>int</td>
+<td>20</td>
+<td>Number of vehicles to spawn.</td>
+</tr>
+<tr>
+<td><code>randomSeed</code></td>
+<td>int</td>
+<td>1</td>
+<td>.</td>
+</tr>
+<tr>
+<td><code>defaultSpeedMean</code></td>
+<td>float</td>
+<td>60.0</td>
+<td>Mean Default speed of vehicles.</td>
+</tr>
+<tr>
+<td><code>defaultSpeedDeviation</code></td>
+<td>float</td>
+<td>5.0</td>
+<td>Deviation from the default mean speed.</td>
+</tr>
+<tr>
+<td><code>haltDistanceFromFrontVehicleMean</code></td>
+<td>float</td>
+<td>5.0</td>
+<td>Mean halt distance from the front vehicle.</td>
+</tr>
+<tr>
+<td><code>haltDistanceFromFrontVehicleDeviation</code></td>
+<td>float</td>
+<td>1.0</td>
+<td>Deviation from the mean halt distance</td>
+</tr>
+<tr>
+<td><code>tailgateDistanceMean</code></td>
+<td>float</td>
+<td>10.0</td>
+<td>Mean tailgate distance.</td>
+</tr>
+<tr>
+<td><code>tailgateDistanceDeviation</code></td>
+<td>float</td>
+<td>1.0</td>
+<td>Deviation from the mean tailgate distance.</td>
+</tr>
+<tr>
+<td><code>emergencyHaltDistanceMean</code></td>
+<td>float</td>
+<td>2.0</td>
+<td>Mean emergency halt distance from the front vehicle.</td>
+</tr>
+<tr>
+<td><code>emergencyHaltDistanceDeviation</code></td>
+<td>float</td>
+<td>0.5</td>
+<td>Deviation from the mean emergency halt distance</td>
+</tr>
+<tr>
+<td><code>signalStoppingDistanceMean</code></td>
+<td>float</td>
+<td>7.0</td>
+<td>Mean stopping distance from the signal.</td>
+</tr>
+<tr>
+<td><code>signalStoppingDistanceDeviation</code></td>
+<td>float</td>
+<td>1.0</td>
+<td>Deviation from the mean stopping distance from the signal.</td>
+</tr>
+<tr>
+<td><code>laneChangeProbabilityMean</code></td>
+<td>float</td>
+<td>0.002</td>
+<td>Mean lane change probability.</td>
+</tr>
+<tr>
+<td><code>laneChangeProbabilityDeviation</code></td>
+<td>float</td>
+<td>0.0001</td>
+<td>Deviation from the mean lane change probability.</td>
+</tr>
+<tr>
+<td><code>maxThrottle</code></td>
+<td>float</td>
+<td>0.85</td>
+<td>Maximum value of vehicles throttle. [0,1]</td>
+</tr>
+<tr>
+<td><code>maxBrake</code></td>
+<td>float</td>
+<td>0.3</td>
+<td>Maximum value of vehicles brake. [0,1]</td>
+</tr>
+<tr>
+<td><code>maxSteer</code></td>
+<td>float</td>
+<td>0.8</td>
+<td>Maximum value of vehicles steer. [0,1]</td>
+</tr>
+<tr>
+<td><code>baseMinDistance</code></td>
+<td>float</td>
+<td>2.0</td>
+<td>Minimum distance for forward waypoint.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-requirements">3. Requirements</h2>
+<ol>
+<li>Unreal Engine </li>
+</ol>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../core/" class="btn btn-neutral float-left" title="Core"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../PedestrianManager/" class="btn btn-neutral float-right" title="Pedestrian">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../core/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../PedestrianManager/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

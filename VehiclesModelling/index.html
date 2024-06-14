@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Vehicles - Limulator</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Vehicles";
+        var mkdocs_page_input_path = "VehiclesModelling.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Limulator
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Scenenario Generator</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../LLM-Scenario-Builder/">LLM Scenario Builder</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../OSM2XODR/">OSM To XODR</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ManeuverGenerator/">Manuever Generator</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../VariationEngine/">Variation Engine</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Simulation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../game/">Game</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../lights/">Lights</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../map/">Map</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../weather/">Weather</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../visualizer/">Visalizer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../core/">Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../TrafficManager/">Traffic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PedestrianManager/">Pedestrian</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Util/">Util</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Sensor</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../CameraSensor/">Camera</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../DepthCamera/">Depth Camera</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../SemanticSegmentationCamera/">Semantic Segmentation Camera</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../LidarSensor/">Rotation Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../SolidStateLidarSensor/">Solid State Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../BoundingBoxSensor/">Bounding Box Sensor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Radar/">Radar</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Modelling</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../ToolSummary/">Tool Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../LightsModelling/">Lights</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PedestrianModelling/">Pedestrians</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Vehicles</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#version-10">Version 1.0</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#modeler-manasvi-kale">Modeler - Manasvi Kale</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#1-summary">1. Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-method">2. Method</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-requirements">3. Requirements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-how-to-guide">4. How-to-guide</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#41-step-1-creating-vehicle-blueprint">4.1 Step 1 - Creating Vehicle Blueprint</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5-tutorial">5. Tutorial</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Limulator</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Modelling</li>
+      <li class="breadcrumb-item active">Vehicles</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="vehicle-blueprints">Vehicle Blueprints</h1>
+<h2 id="version-10">Version 1.0</h2>
+<h3 id="modeler-manasvi-kale">Modeler - Manasvi Kale</h3>
+<h2 id="1-summary">1. Summary</h2>
+<p>This document helps you create a Vehicle blueprint equipped with vehicle lights which are in alignment with vehicle controller.</p>
+<h2 id="2-method">2. Method</h2>
+<p>Vehicle Blueprint deriving from "limulatorwheeledvehicle" base class inherits all the base properties and functions of a vehicle. Vehicle lights are placed at relevant positions with relevant intensity values. These Blueprints are spawned in raod map at run time in simulation.  </p>
+<p>Refer How-to-guide to set up all the required compoents for vehicle blueprints. </p>
+<p>flowchart - </p>
+<p><img alt="alt text" src="../resources/VehicleDiagram.drawio.png" /></p>
+<h2 id="3-requirements">3. Requirements</h2>
+<ol>
+<li>Vehicle Skeletal Mesh</li>
+<li>AnimationBP for Vehicles</li>
+<li>Front and Rear Tyre Blueprints</li>
+<li>LimulatorWheeledVehicle Base class </li>
+<li>SimpleLimulatorWheeledVehicle Base class</li>
+</ol>
+<h2 id="4-how-to-guide">4. How-to-guide</h2>
+<h3 id="41-step-1-creating-vehicle-blueprint">4.1 Step 1 - Creating Vehicle Blueprint</h3>
+<ol>
+<li>Step 1 - Create BP and inherit it from “LimulatorWheeledVehicleBase” and name it as per vehicle model.</li>
+<li>Step 2 - Add the vehicle skeletal mesh and relevant animation BP to it.</li>
+<li>Step 3 - Select Vehicle Movement Component.<pre><code> 3.1 Inside vehicle set up heading add mass.
+
+ 3.2 In the Wheel setups add front and rear wheels and wheel class.
+
+ 3.2 Add chassis width and chassis height as per your car model.
+</code></pre>
+<ol>
+<li>Step 4 - All the inherited lights are to be adjusted at their respective places as per the model. (i.e headlights, brake lights, indicator etc) </li>
+</ol>
+</li>
+</ol>
+<p>The radius for lights will change for each vehicle model. Adjust that as well.</p>
+<ol>
+<li>
+<p>Step 5 - Copy all the blueprint functions from the base class blueprint and paste it in the new BP.</p>
+</li>
+<li>
+<p>Step 6 - Open event graph of the vehicle.</p>
+</li>
+<li>
+<p>Step 7 - Add “Event refresh lights” node and add refresh vehicle lights and connect them. Also join “in lights state” to “vehicle lights state”.</p>
+</li>
+<li>
+<p>Step 8 - Apply and save.</p>
+</li>
+<li>
+<p>Vehicles created with "LimulatorWheeledVehicleBase" are used simulation in pre-built maps. </p>
+</li>
+<li>Steps for creating vehicles for XOSC pipeline are all same mentioned above. The base class however changes to "SimpleLimulatorWheeledVehicle". </li>
+</ol>
+<h2 id="5-tutorial">5. Tutorial</h2>
+<p><img alt="alt text" src="../resources/VehicleBase_BP.png" /></p>
+<hr />
+<p><img alt="alt text" src="../resources/Vehicle_anim_mesh.png" /></p>
+<hr />
+<p><img alt="alt text" src="../resources/VehicleMoveComp_BP.png" /></p>
+<hr />
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../PedestrianModelling/" class="btn btn-neutral float-left" title="Pedestrians"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../PedestrianModelling/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

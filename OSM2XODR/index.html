@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>OSM To XODR - Limulator</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "OSM To XODR";
+        var mkdocs_page_input_path = "OSM2XODR.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Limulator
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Scenenario Generator</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../LLM-Scenario-Builder/">LLM Scenario Builder</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">OSM To XODR</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#version-10">Version 1.0</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#developer-meet-maratha">Developer: Meet Maratha</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#1-summary">1. Summary</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#needs-updating">Needs updating</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-method">2. Method</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#needs-updating_1">Needs updating</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#21-inputs">2.1 Inputs</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#22-extent-loader">2.2 Extent Loader</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#23-list-of-all-extents">2.3 List of All extents</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#24-openstreetmap-downloader">2.4 OpenStreetMap Downloader</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#25-openstreetmaps">2.5 OpenStreetMaps</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#26-road-network-extractor">2.6 Road Network Extractor</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#27-road-network">2.7 Road Network</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#28-roadside-objects-extractor">2.8 Roadside Objects Extractor</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#29-roadside-objects">2.9 Roadside objects</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#210-opendrive-writer">2.10 OpenDrive Writer</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#211-opendrive-maps">2.11 OpenDrive Maps</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#212-syntax-checker">2.12 Syntax Checker</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#216-output">2.16 Output</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#requirement">Requirement</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ManeuverGenerator/">Manuever Generator</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../VariationEngine/">Variation Engine</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Simulation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../game/">Game</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../lights/">Lights</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../map/">Map</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../weather/">Weather</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../visualizer/">Visalizer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../core/">Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../TrafficManager/">Traffic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PedestrianManager/">Pedestrian</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Util/">Util</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Sensor</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../CameraSensor/">Camera</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../DepthCamera/">Depth Camera</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../SemanticSegmentationCamera/">Semantic Segmentation Camera</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../LidarSensor/">Rotation Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../SolidStateLidarSensor/">Solid State Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../BoundingBoxSensor/">Bounding Box Sensor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Radar/">Radar</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Modelling</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ToolSummary/">Tool Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../LightsModelling/">Lights</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PedestrianModelling/">Pedestrians</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../VehiclesModelling/">Vehicles</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Limulator</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Scenenario Generator</li>
+      <li class="breadcrumb-item active">OSM To XODR</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="osm2xodr">OSM2XODR</h1>
+<h2 id="version-10">Version 1.0</h2>
+<h3 id="developer-meet-maratha">Developer: Meet Maratha</h3>
+<h2 id="1-summary">1. Summary</h2>
+<h3 id="needs-updating">Needs updating</h3>
+<p>This module is responsible for generation of a type of HD Map called <a href="https://www.asam.net/standards/detail/opendrive/">OpenDrive</a> (XODR) file based on real-world <a href="https://www.openstreetmap.org/">OpenStreetMap</a> (OSM) data. This is used in tandem with our other modules to generate scenarios and sensor data for those scenarios. One of our module that can benefits a lot from this module is <a href="../ManeuverGenerator/">Maneuver Generator</a> that uses an OpenDrive file with some other inputs to generate scenarios performing certain type of maneuver. It can also be used with our <a href="../TrafficManager/">Traffic Manager</a> module which can generate traffic on this generated OpenDrive file for generating sensor data.</p>
+<p>The inputs to this module is a text (.txt) file which consists of extents on OSM highlighting the required region. This required region is downloaded and road information such as road network and roadside objects are extracted from this OSM to generate OpenDrive file. After this OpenDrive file is generated a check is performed on it to verify if there is no syntax error in the file.</p>
+<h2 id="2-method">2. Method</h2>
+<p><img alt="Maneuver Generator Flow Chart" src="../resources/manuever_generator_module.png" /></p>
+<h3 id="needs-updating_1">Needs updating</h3>
+<h3 id="21-inputs">2.1 Inputs</h3>
+<ul>
+<li><strong>OSM Extents:</strong> This is a text file which contains extents of the regions we need to generate OpenDrive file for, from OpenStreetMap.</li>
+</ul>
+<h3 id="22-extent-loader">2.2 Extent Loader</h3>
+<ul>
+<li>This reads the input text file and stores them as a list.</li>
+</ul>
+<h3 id="23-list-of-all-extents">2.3 List of All extents</h3>
+<ul>
+<li>This is a list of all the extents stored in software to be processed.</li>
+</ul>
+<h3 id="24-openstreetmap-downloader">2.4 OpenStreetMap Downloader</h3>
+<ul>
+<li>This processess each of the extent serially and downloads the respective OSM using wget.</li>
+<li>It stores the downloaded OSM in the relevant folder</li>
+</ul>
+<h3 id="25-openstreetmaps">2.5 OpenStreetMaps</h3>
+<ul>
+<li>These are the downloaded OSMs.</li>
+</ul>
+<h3 id="26-road-network-extractor">2.6 Road Network Extractor</h3>
+<ul>
+<li>This extracts and extrapolates road network such that we can create an OpenDrive map.</li>
+<li>To do this it makes use of Nodes and Ways in OSM, and extrapolates connections and geometry.</li>
+<li>This information is stored as a data structure</li>
+</ul>
+<h3 id="27-road-network">2.7 Road Network</h3>
+<ul>
+<li>The data structure that holds information about all the roads in the road network.</li>
+<li>This is used to generate the OpenDrive file in further steps.</li>
+</ul>
+<h3 id="28-roadside-objects-extractor">2.8 Roadside Objects Extractor</h3>
+<ul>
+<li><strong>Inputs:</strong><ul>
+<li>Road Network</li>
+<li>OpenStreetMap</li>
+</ul>
+</li>
+<li>This uses the data in OSM to find road side objects such as traffic signal, signs, and zebra crossings in the network.</li>
+<li>It then uses Road Network to compute the local co-ordinate for these objects based on the road they are attached.</li>
+</ul>
+<h3 id="29-roadside-objects">2.9 Roadside objects</h3>
+<ul>
+<li>These are the local co-ordinate position for the roadside objects that is computed from OSM data.</li>
+</ul>
+<h3 id="210-opendrive-writer">2.10 OpenDrive Writer</h3>
+<ul>
+<li><strong>Inputs:</strong><ul>
+<li>Road Network</li>
+<li>Roadside Objects</li>
+</ul>
+</li>
+<li>This writes the OpenDrive file based on the Road Network data structure and Roadside objects.</li>
+</ul>
+<h3 id="211-opendrive-maps">2.11 OpenDrive Maps</h3>
+<ul>
+<li>This the generated OpenDrive file that is stored in the default folder.</li>
+</ul>
+<h3 id="212-syntax-checker">2.12 Syntax Checker</h3>
+<ul>
+<li>This module checks for any error in the syntax of the generated OpenDrive file.</li>
+<li>If there is some error in the generated OpenDrive file, it deletes that file and moves on to another process.</li>
+</ul>
+<h3 id="216-output">2.16 Output</h3>
+<ul>
+<li>Our output is the OpenDrive file generated for the OSM extent.</li>
+<li>It is stored in the database for performing some other computations based on this file.</li>
+</ul>
+<h2 id="requirement">Requirement</h2>
+<ul>
+<li>Installed Python version 3.10</li>
+<li>osmread package.</li>
+<li>Installed wget</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../LLM-Scenario-Builder/" class="btn btn-neutral float-left" title="LLM Scenario Builder"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ManeuverGenerator/" class="btn btn-neutral float-right" title="Manuever Generator">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../LLM-Scenario-Builder/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../ManeuverGenerator/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

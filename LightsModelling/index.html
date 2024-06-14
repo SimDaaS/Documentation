@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Lights - Limulator</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Lights";
+        var mkdocs_page_input_path = "LightsModelling.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Limulator
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Scenenario Generator</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../LLM-Scenario-Builder/">LLM Scenario Builder</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../OSM2XODR/">OSM To XODR</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ManeuverGenerator/">Manuever Generator</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../VariationEngine/">Variation Engine</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Simulation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../game/">Game</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../lights/">Lights</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../map/">Map</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../weather/">Weather</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../visualizer/">Visalizer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../core/">Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../TrafficManager/">Traffic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PedestrianManager/">Pedestrian</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Util/">Util</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Sensor</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../CameraSensor/">Camera</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../DepthCamera/">Depth Camera</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../SemanticSegmentationCamera/">Semantic Segmentation Camera</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../LidarSensor/">Rotation Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../SolidStateLidarSensor/">Solid State Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../BoundingBoxSensor/">Bounding Box Sensor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Radar/">Radar</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Modelling</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../ToolSummary/">Tool Summary</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Lights</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#version-10">Version 1.0</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#modeler-manasvi-kale">Modeler - Manasvi Kale</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#1-summary">1. Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-method">2. Method</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-requirements">3. Requirements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-how-to-guide">4. How-to-guide</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#41-step-1-creating-traffic-light-blueprint">4.1 Step 1 - Creating Traffic Light Blueprint</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#42-step-1-creating-crosswalks-blueprint">4.2 Step 1 - Creating Crosswalks Blueprint</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#43-step-3-traffic-lights-group-controller">4.3 Step 3 - Traffic Lights Group Controller</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PedestrianModelling/">Pedestrians</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../VehiclesModelling/">Vehicles</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Limulator</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Modelling</li>
+      <li class="breadcrumb-item active">Lights</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="traffic-lights">Traffic Lights</h1>
+<h2 id="version-10">Version 1.0</h2>
+<h3 id="modeler-manasvi-kale">Modeler - Manasvi Kale</h3>
+<h2 id="1-summary">1. Summary</h2>
+<p>This document helps you create a traffic lights blueprint which is in alignment with traffic lights controller, during the Simulation vehicles and pedestrians will only follow the traffic lights created by these specifications in our simulator.</p>
+<h2 id="2-method">2. Method</h2>
+<p>A blueprint deriving from traffic lights base class is created which inherits light controlling properties and functions of the base class. This Blueprint is then further given to controller for realistic working of traffic light at a junction in environment. </p>
+<p>Refer How-to-guide to set up other independent compoents required for working of traffic lights.</p>
+<p>flowchart - </p>
+<p><img alt="alt text" src="../resources/TrafficLights.drawio.png" /></p>
+<h2 id="3-requirements">3. Requirements</h2>
+<ol>
+<li>Static Mesh of Traffic Light</li>
+<li>Relevant materials for light mesh</li>
+<li>Trafficlights base class</li>
+<li>Traffic Lights Group Controller </li>
+<li>
+<p>Crosswalk blueprints</p>
+<p>5.1. 3D asset of crosswalk</p>
+<p>5.2. Material Blueprints </p>
+<p>5.3. Crosswalk base class</p>
+</li>
+</ol>
+<h2 id="4-how-to-guide">4. How-to-guide</h2>
+<h3 id="41-step-1-creating-traffic-light-blueprint">4.1 Step 1 - Creating Traffic Light Blueprint</h3>
+<ol>
+<li>Step 1 - Create / Import static mesh for traffic lights.</li>
+<li>Step 2 - Create a Blueprint in the folder content&gt;blueprints&gt;lights.</li>
+<li>Step 3 - Inherit a new blueprint from the “trafficlightbase” class.</li>
+<li>Step 4 - Add static mesh in the new BP. </li>
+<li>Step 5 - Set lights and default intensity to 0.</li>
+<li>Step 6 - Apply and save BP</li>
+</ol>
+<p><img alt="alt text" src="../resources/TrafficLight_BP.png" /></p>
+<h3 id="42-step-1-creating-crosswalks-blueprint">4.2 Step 1 -  Creating Crosswalks Blueprint</h3>
+<ol>
+<li>Step 1 - Create/Import a static mesh for crosswalks.</li>
+<li>Step 2 - Create a new BP for crosswalks and inherit it from the CrossingBase class.</li>
+<li>Step 3 - Import static mesh for crosswalks in BP and place it inside the box.</li>
+<li>Step 4 - Set collision presets for the box as “no collision”</li>
+<li>Step 5 - Set collision presets for all crosswalks static meshes used as “no collision”</li>
+<li>Step 6 - Apply and save </li>
+</ol>
+<p><img alt="alt text" src="../resources/Crosswalks_BP.png" /></p>
+<h3 id="43-step-3-traffic-lights-group-controller">4.3 Step 3 -  Traffic Lights Group Controller</h3>
+<ol>
+<li>Step 1 - Place traffic lights group controller anywhere in the map.</li>
+<li>Step 2 - Set phase time and clearance time for the lights. </li>
+<li>Step 3 - Add the number array elements as no. of lights present in the map.</li>
+<li>Step 4 - Add the crosswalk array elements as no. of crosswalks in the map.</li>
+<li>Step 5 - Select the BP of traffic lights in the order you want them to run.</li>
+<li>Step 6 - For each traffic light add the respective crosswalk in the crosswalk array elements. Ensure the order of traffic lights and the order of their crosswalk should match.</li>
+<li>Step 7 - Save the map and perform trail runs to ensure correct working of lights and crosswalks.</li>
+</ol>
+<p><img alt="alt text" src="../resources/TrafficLightGrpController.png" /></p>
+<hr />
+<h1 id="street-lights">Street Lights</h1>
+<h2 id="version-1">Version 1</h2>
+<h2 id="1-summary_1">1. Summary</h2>
+<p>This document aims to create a dynamic Street lights blueprints which will turn on only when the simulation is happening in evening or in night mode and turns off autonatically otherwise.  </p>
+<h2 id="2-method_1">2. Method</h2>
+<p>A blueprint deriving from street lights base class is created which inherits light controlling properties and functions of the base class. The street lights blueprints are of two types.</p>
+<ul>
+<li>Single Street Light</li>
+<li>Double Street Light</li>
+</ul>
+<p>flowchart - </p>
+<p><img alt="alt text" src="../resources/StreetLights.drawio.png" /></p>
+<h2 id="3-requirements_1">3. Requirements</h2>
+<ol>
+<li>Street Light 3D model</li>
+<li>Material blueprints for street light</li>
+<li>lights base classes
+  3.1 single street light base class
+  3.2 double street light base class </li>
+</ol>
+<h2 id="4-how-to-guide_1">4. How-to-guide</h2>
+<h4 id="step-1-create-import-static-mesh-for-steet-lights">Step 1 - Create / Import static mesh for steet lights.</h4>
+<h4 id="step-2-create-a-blueprint-in-the-folder-contentblueprintslights">Step 2 - Create a Blueprint in the folder content&gt;blueprints&gt;lights.</h4>
+<h4 id="step-3-inherit-a-new-blueprint-from-the-singlestreetlightbase-class">Step 3 - Inherit a new blueprint from the “singlestreetlightbase” class.</h4>
+<h4 id="step-4-add-static-mesh-in-the-new-bp">Step 4 - Add static mesh in the new BP.</h4>
+<h4 id="step-5-set-lights-and-default-intensity-to-0">Step 5 - Set lights and default intensity to 0.</h4>
+<h4 id="step-6-apply-and-save-bp">Step 6 - Apply and save BP</h4>
+<ul>
+<li>The procedure to create street light blueprint from double street light base class is same. The base class changes to "DoubleStrteetLights" base class. </li>
+</ul>
+<h2 id="5-tutorial">5. Tutorial</h2>
+<p><img alt="alt text" src="../resources/StreetLights_BP.png" /></p>
+<hr />
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../ToolSummary/" class="btn btn-neutral float-left" title="Tool Summary"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../PedestrianModelling/" class="btn btn-neutral float-right" title="Pedestrians">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../ToolSummary/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../PedestrianModelling/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

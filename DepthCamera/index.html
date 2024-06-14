@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Depth Camera - Limulator</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Depth Camera";
+        var mkdocs_page_input_path = "DepthCamera.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Limulator
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Scenenario Generator</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../LLM-Scenario-Builder/">LLM Scenario Builder</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../OSM2XODR/">OSM To XODR</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ManeuverGenerator/">Manuever Generator</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../VariationEngine/">Variation Engine</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Simulation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../game/">Game</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../lights/">Lights</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../map/">Map</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../weather/">Weather</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../visualizer/">Visalizer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../core/">Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../TrafficManager/">Traffic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PedestrianManager/">Pedestrian</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Util/">Util</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Sensor</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../CameraSensor/">Camera</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Depth Camera</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#version">Version</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#developer">Developer</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#1-summary">1. Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-method">2. Method</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#camera-attributes">Camera attributes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#post-processing-attributes">Post-Processing attributes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#output-attributes">Output attributes</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-requirements">3. Requirements</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../SemanticSegmentationCamera/">Semantic Segmentation Camera</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../LidarSensor/">Rotation Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../SolidStateLidarSensor/">Solid State Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../BoundingBoxSensor/">Bounding Box Sensor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Radar/">Radar</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Modelling</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ToolSummary/">Tool Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../LightsModelling/">Lights</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PedestrianModelling/">Pedestrians</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../VehiclesModelling/">Vehicles</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Limulator</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Sensor</li>
+      <li class="breadcrumb-item active">Depth Camera</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="module-name">Module Name</h1>
+<p>Semantic Segmentation Camera </p>
+<h2 id="version">Version</h2>
+<h3 id="developer">Developer</h3>
+<h2 id="1-summary">1. Summary</h2>
+<p>The Depth camera sensor is designed to capture scenes and generate depth images in simulation.</p>
+<h2 id="2-method">2. Method</h2>
+<p>Initally, a new 2D TextureRenderTarget object is created to render the target texture. The size and format of the pixels for the target texture are initialised according to sensor input, with the texture width and height set to the input <code>imageWidth</code> and <code>imageHeight</code>, respectively.  Following the initialization of the target texture,the scene is captured using the SceneCaptureComponent provided by unreal engine. The rate at which scene is captured is determined by <code>1/scanningFrequency</code>. Once a scene has been captured a Depth material is applied on target texture. The Depth material calcutes the scene depth value for each pixel and clamps the pixel value between 0-1. This resulting depth color data is then send to an image data worker, which convets it into an segmented image in <code>JPG</code> format. </p>
+<h3 id="camera-attributes">Camera attributes</h3>
+<table>
+<thead>
+<tr>
+<th>Input attribute</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>imageWidth</code></td>
+<td>int</td>
+<td>640</td>
+<td>Image width in pixels</td>
+</tr>
+<tr>
+<td><code>imageHeight</code></td>
+<td>int</td>
+<td>480</td>
+<td>Image width in pixels</td>
+</tr>
+<tr>
+<td><code>scanningFrequency</code></td>
+<td>int</td>
+<td>10</td>
+<td>Capturing frequency of camera in Hz.</td>
+</tr>
+<tr>
+<td><code>bShow2DBounds</code></td>
+<td>bool</td>
+<td>false</td>
+<td>Whether to show 2D Bounding boxes in captured image.</td>
+</tr>
+<tr>
+<td><code>bShow3DBounds</code></td>
+<td>bool</td>
+<td>false</td>
+<td>Whether to show 3D Bounding boxes in captured image.</td>
+</tr>
+<tr>
+<td><code>bShowOccludedObjects</code></td>
+<td>bool</td>
+<td>false</td>
+<td>Whether to show Bounding boxes for occluded objects.</td>
+</tr>
+<tr>
+<td><code>bEnablePostProcessingEffects</code></td>
+<td>bool</td>
+<td>false</td>
+<td>Enable post-processing effects.</td>
+</tr>
+<tr>
+<td><code>targetGamma</code></td>
+<td>float</td>
+<td>2.2</td>
+<td>Target gamma value of the camera.</td>
+</tr>
+<tr>
+<td><code>fovAngle</code></td>
+<td>float</td>
+<td>46.0</td>
+<td>Horizontal field of view in degrees.</td>
+</tr>
+<tr>
+<td><code>shutterSpeed</code></td>
+<td>float</td>
+<td>1/80.0</td>
+<td>The camera shutter speed in seconds.</td>
+</tr>
+<tr>
+<td><code>ISO</code></td>
+<td>float</td>
+<td>200</td>
+<td>The camera sensor sensitivity.</td>
+</tr>
+<tr>
+<td><code>fstop</code></td>
+<td>float</td>
+<td>1.4</td>
+<td>Opening of the camera lens. Aperture is 1/fstop with typical lens going down to f/1.2 (larger opening). Larger numbers will reduce the Depth of Field effect.</td>
+</tr>
+<tr>
+<td><code>FocalDistance</code></td>
+<td>float</td>
+<td>1000</td>
+<td>Distance at which the depth of field effect should be sharp. Measured in cm (UE units).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="post-processing-attributes">Post-Processing attributes</h3>
+<table>
+<thead>
+<tr>
+<th>Input attribute</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bEnableDepthBlur</code></td>
+<td>bool</td>
+<td>false</td>
+<td>To enable Depth Blur (Depth of Field) post-process effect.</td>
+</tr>
+<tr>
+<td><code>depthBlurBladeCount</code></td>
+<td>int</td>
+<td>5</td>
+<td>The number of blades of the diaphragm within the lens between [4,16].</td>
+</tr>
+<tr>
+<td><code>depthBlurAmount</code></td>
+<td>float</td>
+<td>1.0</td>
+<td>Depth blur km for 50%</td>
+</tr>
+<tr>
+<td><code>depthBlurRadius</code></td>
+<td>float</td>
+<td>0.0</td>
+<td>Depth blur radius in pixels at 1920x</td>
+</tr>
+<tr>
+<td><code>depthBlurMinFStop</code></td>
+<td>float</td>
+<td>1.2</td>
+<td>the maximum opening of the camera lens to control the curvature of blades of the diaphragm.</td>
+</tr>
+<tr>
+<td><code>lensFlareIntensity</code></td>
+<td>flaot</td>
+<td>0.1</td>
+<td>Intensity for the lens flare post-process effect, 0.0 for disabling it.</td>
+</tr>
+<tr>
+<td><code>lensFlareThreshold</code></td>
+<td>float</td>
+<td>0.1</td>
+<td>Minimum brightness the lens flare starts having effect.</td>
+</tr>
+<tr>
+<td><code>lensFlareBokehSize</code></td>
+<td>float</td>
+<td>8.0</td>
+<td>Size of the lens blur (in percent of the view width) that is done with the Bokeh texture.</td>
+</tr>
+<tr>
+<td><code>motionBlurIntensity</code></td>
+<td>float</td>
+<td>0.45</td>
+<td>Strength of motion blur [0,1].  0.0 for disabling it.</td>
+</tr>
+<tr>
+<td><code>motionBlurMaxDistortion</code></td>
+<td>float</td>
+<td>0.35</td>
+<td>Max distortion caused by motion blur. Percentage of screen width. 0.0 for disabling it.</td>
+</tr>
+<tr>
+<td><code>motionBlurPerObjectSize</code></td>
+<td>float</td>
+<td>0.1</td>
+<td>The minimum projected screen radius for a primitive to be drawn in the velocity pass for motion blur consideration. The radius is a percentage of screen width.</td>
+</tr>
+<tr>
+<td><code>motionBlurTargetFPS</code></td>
+<td>int</td>
+<td>0</td>
+<td>Defines the target frames per second (fps) for motion blur. 0 to make motion blur dependent on the actual measured frame rate.</td>
+</tr>
+<tr>
+<td><code>bloomThreshold</code></td>
+<td>float</td>
+<td>-1</td>
+<td>Minimum luminance the bloom starts having effect.</td>
+</tr>
+<tr>
+<td><code>bloomIntensity</code></td>
+<td>float</td>
+<td>0.67</td>
+<td>Intensity for the bloom post-process effect, 0.0 for disabling it.</td>
+</tr>
+<tr>
+<td><code>bEnableChromaticAberration</code></td>
+<td>bool</td>
+<td>10000.0</td>
+<td>To enable Chromatic Aberration post-process effect.</td>
+</tr>
+<tr>
+<td><code>ChromaticAberrationIntensity</code></td>
+<td>float</td>
+<td>0.0</td>
+<td>Scaling factor to control color shifting, more noticeable on the screen borders.</td>
+</tr>
+<tr>
+<td><code>ChromaticAberrationOffset</code></td>
+<td>float</td>
+<td>0.0</td>
+<td>Normalized distance to the center of the image where the effect takes place.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="output-attributes">Output attributes</h3>
+<p>Captured segmented image of provided height and width in <code>jpg</code> format.</p>
+<h2 id="3-requirements">3. Requirements</h2>
+<p>Unreal </p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../CameraSensor/" class="btn btn-neutral float-left" title="Camera"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../SemanticSegmentationCamera/" class="btn btn-neutral float-right" title="Semantic Segmentation Camera">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../CameraSensor/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../SemanticSegmentationCamera/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

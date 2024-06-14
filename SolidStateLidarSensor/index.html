@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Solid State Lidar - Limulator</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Solid State Lidar";
+        var mkdocs_page_input_path = "SolidStateLidarSensor.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Limulator
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Scenenario Generator</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../LLM-Scenario-Builder/">LLM Scenario Builder</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../OSM2XODR/">OSM To XODR</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ManeuverGenerator/">Manuever Generator</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../VariationEngine/">Variation Engine</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Simulation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../game/">Game</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../lights/">Lights</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../map/">Map</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../weather/">Weather</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../visualizer/">Visalizer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../core/">Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../TrafficManager/">Traffic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PedestrianManager/">Pedestrian</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Util/">Util</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Sensor</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../CameraSensor/">Camera</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../DepthCamera/">Depth Camera</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../SemanticSegmentationCamera/">Semantic Segmentation Camera</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../LidarSensor/">Rotation Lidar</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Solid State Lidar</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#version">Version</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#developer">Developer</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#1-summary">1. Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-method">2. Method</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#solid-state-lidar-attributes">Solid State Lidar attributes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#output-attributes">Output attributes</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-requirements">3. Requirements</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../BoundingBoxSensor/">Bounding Box Sensor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Radar/">Radar</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Modelling</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ToolSummary/">Tool Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../LightsModelling/">Lights</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PedestrianModelling/">Pedestrians</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../VehiclesModelling/">Vehicles</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Limulator</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Sensor</li>
+      <li class="breadcrumb-item active">Solid State Lidar</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="module-name">Module Name</h1>
+<p>Solid-State LIDAR Sensor </p>
+<h2 id="version">Version</h2>
+<h3 id="developer">Developer</h3>
+<h2 id="1-summary">1. Summary</h2>
+<p>The Lidar sensor is designed to simulate a Soild-state Lidar sensor using ray-casting. It utilizes Lidar parameters such as channels both horizontal and vertical, scanning frequency, field of view both horizontal and vertical, and range to generate a point cloud output. The resulting point cloud contains location, time, distance, intensity, label and scan angle information in <code>ply</code> format.</p>
+<h2 id="2-method">2. Method</h2>
+<p>To simulate the rotating LIDAR sensor, the sensor is first initiallised by computing horizontal and vertical angle for each horizontal and veritcal channel/laser within there respective FOV.  Ray-casting is then performed for each horizontal and veritical channel/laser with a rate of <code>1/frequency</code>. The point cloud obtained from ray-casting contains information about the hit point's <strong>location</strong> (in xyz), <strong>time</strong> , <strong>distance</strong>, <strong>intensity</strong>, <strong>label</strong> and <strong>scan angle</strong>. </p>
+<p>Rest of all funcitionality is same as <a href="../LidarSensor/">Rotating Lidar Sensor</a>. </p>
+<h3 id="solid-state-lidar-attributes">Solid State Lidar attributes</h3>
+<table>
+<thead>
+<tr>
+<th>Input attribute</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>channelsH</code></td>
+<td>int</td>
+<td>128</td>
+<td>Number of lasers in horizontal.</td>
+</tr>
+<tr>
+<td><code>channelsV</code></td>
+<td>int</td>
+<td>32</td>
+<td>Number of lasers in vertical.</td>
+</tr>
+<tr>
+<td><code>frequency</code></td>
+<td>float</td>
+<td>20.0</td>
+<td>Sensor frequency (in Hz).</td>
+</tr>
+<tr>
+<td><code>wavelength</code></td>
+<td>float</td>
+<td>1.4</td>
+<td>Wavelength at which solid-state Lidar sensor operates (in micrometer).</td>
+</tr>
+<tr>
+<td><code>minRange</code></td>
+<td>float</td>
+<td>0.0</td>
+<td>Minimum distance at which a point can be detected by the Lidar sensor (in cm).</td>
+</tr>
+<tr>
+<td><code>maxRange</code></td>
+<td>float</td>
+<td>10000.0</td>
+<td>Maximum distance at which a point can be detected by the Lidar sensor (in cm).</td>
+</tr>
+<tr>
+<td><code>negHorizontalFOV</code></td>
+<td>float</td>
+<td>-45.0</td>
+<td>Minimum horizontal Angle (in degrees).</td>
+</tr>
+<tr>
+<td><code>posHorizontalFOV</code></td>
+<td>float</td>
+<td>75.0</td>
+<td>Maximum horizontal Angle (in degrees).</td>
+</tr>
+<tr>
+<td><code>negVerticalFOV</code></td>
+<td>float</td>
+<td>-10.0</td>
+<td>Minimum vertical Angle (in degrees).</td>
+</tr>
+<tr>
+<td><code>posVerticalFOV</code></td>
+<td>float</td>
+<td>20.0</td>
+<td>Maximum horizontal Angle (in degrees).</td>
+</tr>
+<tr>
+<td><code>atmosphereAttenuationRate</code></td>
+<td>float</td>
+<td>0.004</td>
+<td>Coefficient that measures the solid state Lidar instensity loss per meter,</td>
+</tr>
+</tbody>
+</table>
+<h3 id="output-attributes">Output attributes</h3>
+<table>
+<thead>
+<tr>
+<th>Sensor data attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td>float</td>
+<td>X coordinate of hit point.</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td>float</td>
+<td>Y coordinate of hit point.</td>
+</tr>
+<tr>
+<td><code>z</code></td>
+<td>float</td>
+<td>Z coordinate of hit point.</td>
+</tr>
+<tr>
+<td><code>intenstity</code></td>
+<td>float</td>
+<td>Intensity of the reflected leaser from the hit point.</td>
+</tr>
+<tr>
+<td><code>time</code></td>
+<td>float</td>
+<td>Simulation time of the measurement in seconds since the beginning of the episode.</td>
+</tr>
+<tr>
+<td><code>label</code></td>
+<td>uint</td>
+<td>Label of hit point (see class-label mapping).</td>
+</tr>
+<tr>
+<td><code>r</code></td>
+<td>uint</td>
+<td>red value of the color of label.</td>
+</tr>
+<tr>
+<td><code>g</code></td>
+<td>uint</td>
+<td>green value of the color of label.</td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td>uint</td>
+<td>blue value of the color of label.</td>
+</tr>
+<tr>
+<td><code>scan_angle</code></td>
+<td>float</td>
+<td>Horizontal angle of the hit point.</td>
+</tr>
+<tr>
+<td><code>distance</code></td>
+<td>float</td>
+<td>Distance of hit point from  Lidar sensor (im cm).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-requirements">3. Requirements</h2>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../LidarSensor/" class="btn btn-neutral float-left" title="Rotation Lidar"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../BoundingBoxSensor/" class="btn btn-neutral float-right" title="Bounding Box Sensor">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../LidarSensor/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../BoundingBoxSensor/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
