@@ -11,7 +11,7 @@ nav:
     - Variation Engine: VariationEngine.md
   
   - Simulation: 
-    - Game: game.md
+    - Game: game.md 
     - Lights: lights.md
     - Map: map.md 
     - Weather: weather.md
